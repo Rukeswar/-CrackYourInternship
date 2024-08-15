@@ -1,0 +1,13 @@
+class Solution {
+    public int minMoves2(int[] nums) {
+        //sorting the array
+        Arrays.sort(nums);
+        // The median is the middle element
+        int median = nums[nums.length / 2];
+        int moves = 0;
+        for (int num : nums) {
+            moves += Math.abs(num - median);
+        }
+        return moves;
+    }
+}

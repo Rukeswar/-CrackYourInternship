@@ -1,0 +1,34 @@
+class Solution {
+    Node compute(Node head) {
+        head = reverse(head);
+        Node temp = head;
+        Node maxNode = head;
+        
+        while (temp != null && temp.next != null) {
+            // If the next node's data is smaller than maxNode's data, remove it
+            if (temp.next.data < maxNode.data) {
+                temp.next = temp.next.next;
+            } else {
+                // Otherwise, move temp and update maxNode
+                temp = temp.next;
+                maxNode = temp;
+            }
+        }
+        
+        // Reverse the list again to restore the original order
+        return reverse(head);
+    }
+    Node reverse(Node head) {
+        Node prev = null;
+        Node curr = head;
+        Node next = null;
+        
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+}
